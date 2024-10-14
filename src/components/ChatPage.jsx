@@ -61,12 +61,11 @@ const ChatPage = () => {
     socket.emit("join chat", chat._id);
   };
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (newMessage && activeChat) {
       const token = Cookies.get("token");
       const decodedToken = jwtDecode(token);
       const userId = decodedToken._id;
-
       const messageData = {
         content: newMessage,
         chatId: activeChat._id,
@@ -75,7 +74,7 @@ const ChatPage = () => {
         },
       };
 
-      dispatch(sendMessage(messageData));
+      await dispatch(sendMessage(messageData));
       socket.emit("new message", messageData);
       setNewMessage("");
     }

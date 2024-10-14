@@ -1,8 +1,32 @@
-# React + Vite
+# DevConnect
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Live:
+    https://dev-connect-a3f5b.web.app/login
 
-Currently, two official plugins are available:
+# YouTube Demo:
+    (Link will be updated later)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Features:
+
+1. Authentication:
+    - Secure authentication using JWT.
+    - User sessions persisted via cookies for authenticated actions.
+
+2. Developer Connections:
+    - Send/accept/decline requests to grow your professional network.
+
+3. Real-time Chat:
+    - Real-time messaging using Socket.IO.
+    - Users can join chat rooms and send/receive messages.
+
+4. Profile Management:
+    - Update profile details like name, skills, and bio.
+    - View profiles of other developers to connect with.
+
+5. Redux for State Management:
+    - Global state management with React-Redux.
+    - Handles slices for connections, messages, and user profiles.
+
+6. Responsive Design:
+    - Optimized for both desktop and mobile views.
+    - Styled with TailwindCSS for a clean and modern UI.
