@@ -35,7 +35,6 @@ const Login = () => {
         },
         { withCredentials: true }
       );
-      console.log(res);
       await setCookiesToken(res);
       dispatch(addUser(res.data.user));
       return navigate("/");
