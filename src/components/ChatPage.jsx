@@ -74,9 +74,9 @@ const ChatPage = () => {
         },
       };
 
-      await dispatch(sendMessage(messageData));
-      socket.emit("new message", messageData);
       setNewMessage("");
+      dispatch(sendMessage(messageData));
+      socket.emit("new message", messageData);
     }
   };
 

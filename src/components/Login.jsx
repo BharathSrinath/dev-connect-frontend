@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../store/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [emailId, setEmailId] = useState("");
@@ -15,6 +16,15 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const setCookiesToken = async(res) => {
+    const token = res.data.token;
+    Cookies.set("token", token, {
+      expires: new Date(Date.now() + 8 * 3600000),
+      secure: true,
+      sameSite: "None",
+    });
+  }
+
   const handleLogin = async () => {
     try {
       const res = await axios.post(
@@ -25,7 +35,9 @@ const Login = () => {
         },
         { withCredentials: true }
       );
-      dispatch(addUser(res.data));
+      console.log(res);
+      await setCookiesToken(res);
+      dispatch(addUser(res.data.user));
       return navigate("/");
     } catch (err) {
       setError(err?.response?.data || "Something went wrong");
@@ -39,7 +51,8 @@ const Login = () => {
         { firstName, lastName, emailId, password },
         { withCredentials: true }
       );
-      dispatch(addUser(res.data.data));
+      await setCookiesToken(res);
+      dispatch(addUser(res.data.user));
       return navigate("/profile");
     } catch (err) {
       setError(err?.response?.data || "Something went wrong");
