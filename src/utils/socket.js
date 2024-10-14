@@ -1,7 +1,7 @@
 // src/socket.js
 import { io } from "socket.io-client";
 
-const ENDPOINT = "http://localhost:3000";
+const ENDPOINT = "https://dev-connect-backend-6vpt.onrender.com";
 export const socket = io(ENDPOINT, { transports: ["websocket"] });
 
 socket.on("connect", () => {
