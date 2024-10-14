@@ -6,10 +6,12 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": {
-        target: "http://localhost:3000",
+      // Proxying all requests to the backend API
+      // Proxying WebSocket requests for Socket.IO
+      "/socket.io": {
+        target: "http://localhost:3000", // Backend server URL
+        ws: true, // Enable WebSocket proxying
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
   },

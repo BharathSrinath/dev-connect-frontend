@@ -1,8 +1,8 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
-import { addConnections } from "../utils/conectionSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addConnections } from "../store/slices/conectionSlice";
 
 const Connections = () => {
   const connections = useSelector((store) => store.connections);
@@ -13,9 +13,7 @@ const Connections = () => {
         withCredentials: true,
       });
       dispatch(addConnections(res.data.data));
-    } catch (err) {
-      // Handle Error Case
-    }
+    } catch (err) {}
   };
 
   useEffect(() => {
@@ -24,20 +22,17 @@ const Connections = () => {
 
   if (!connections) return;
 
-  if (connections.length === 0) return <h1> No Connections Found</h1>;
+  if (connections.length === 0) return <h1 className="text-center mt-10"> No Connections Found</h1>;
 
   return (
-    <div className="text-center my-10">
-      <h1 className="text-bold text-white text-3xl">Connections</h1>
-
+    <div className="my-10">
       {connections.map((connection) => {
         const { _id, firstName, lastName, photoUrl, age, gender, about } =
           connection;
-
         return (
           <div
             key={_id}
-            className=" flex m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto"
+            className=" flex m-4 p-4 rounded-lg bg-base-300 w-11/12 md:w-2/3 lg:w-1/2 mx-auto"
           >
             <div>
               <img

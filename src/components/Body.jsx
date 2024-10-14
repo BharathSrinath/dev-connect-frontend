@@ -1,10 +1,9 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
-import Footer from "./Footer";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../utils/userSlice";
+import { addUser } from "../store/slices/userSlice";
 import { useEffect } from "react";
 
 const Body = () => {
@@ -20,7 +19,7 @@ const Body = () => {
       });
       dispatch(addUser(res.data));
     } catch (err) {
-      if (err.status === 401) {
+      if (err.response && err.response.status === 401) {
         navigate("/login");
       }
       console.error(err);
@@ -29,14 +28,16 @@ const Body = () => {
 
   useEffect(() => {
     fetchUser();
-  }, []);
+  }, []); 
 
   return (
     <div>
       <NavBar />
-      <Outlet />
-      <Footer />
+      <div className="content">
+        <Outlet />
+      </div>
     </div>
   );
 };
+
 export default Body;
