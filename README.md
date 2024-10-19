@@ -1,7 +1,7 @@
 # DevConnect
 
 # Live:
-    https://dev-connect-a3f5b.web.app/login
+    https://dev-connect-a3f5b.web.app
 
 # YouTube Demo:
     (Link will be updated later)

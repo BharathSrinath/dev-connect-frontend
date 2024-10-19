@@ -35,6 +35,7 @@ const Login = () => {
         },
         { withCredentials: true }
       );
+      console.log(res);
       await setCookiesToken(res);
       dispatch(addUser(res.data.user));
       return navigate("/");
@@ -50,8 +51,9 @@ const Login = () => {
         { firstName, lastName, emailId, password },
         { withCredentials: true }
       );
+      console.log(res);
       await setCookiesToken(res);
-      dispatch(addUser(res.data.user));
+      dispatch(addUser(res.data.data));
       return navigate("/profile");
     } catch (err) {
       setError(err?.response?.data || "Something went wrong");

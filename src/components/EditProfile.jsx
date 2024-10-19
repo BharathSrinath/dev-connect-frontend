@@ -30,7 +30,7 @@ const EditProfile = ({ user }) => {
           age,
           gender,
           about,
-          skills, // Include skills in the request
+          skills,
         },
         { withCredentials: true }
       );
