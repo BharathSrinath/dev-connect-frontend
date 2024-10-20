@@ -5,6 +5,7 @@
 
 # YouTube Demo:
     https://www.youtube.com/watch?v=KbyMl0DYE88
+    (Note: Since the application is using free tier of Render.com, the initial request might take 30 seconds to 40 seconds to load)
 
 # Features:
 
